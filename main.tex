@@ -21,18 +21,6 @@
 \input{glyphtounicode}
 
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot{}
@@ -85,7 +73,7 @@
 \newcommand{\resumeProjectHeading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \#1 & #2 \\
+      #1 & #2 \\
     \end{tabular*}\vspace{-7pt}
 }
 
@@ -101,24 +89,71 @@
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{document}
 
 %----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
-
 \begin{center}
     \textbf{\Huge \scshape Prayush B Menon} \\ \vspace{1pt}
     \small 628-263-2031 $|$ \href{mailto:bmenonprayush@gmail.com}{bmenonprayush@gmail.com} $|$ 
-    \href{https://www.linkedin.com/in/prayush-b-menon-14a17b220/}{LinkedIn} $|$
+    \href{https://linkedin.com/in/prayush-menon}{LinkedIn} $|$
+    \href{https://github.com/k0-R0}{GitHub} $|$
     \href{https://k0-r0.github.io/}{Portfolio}
 \end{center}
-%-----------Objective------------
+
+%-----------OBJECTIVE------------
 \section{OBJECTIVE}
-    {Self-driven ECE professional with 4 years of experience as an SDET, pivoting into Embedded Systems Development. Focused on leveraging a strong background in software quality to build optimized, solid code from the ground up. Proficient in C, C++, and DSA, with hands-on experience in low-level programming and system logic}
+    {Embedded Systems \& Firmware Engineer with an ECE background and hands-on expertise in bare-metal C/C++ development on PIC microcontrollers. Strong foundation in hardware protocols (CAN, UART, SPI, I2C), memory-efficient data structures, and Linux-based debugging using GDB. Advanced training in low-level systems programming, and hardware-software integration.}
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+     \textbf{Languages}{: C, C++, Embedded C} \\
+     \textbf{Microcontrollers \& Protocols}{: PIC18F4580, UART, I2C, SPI, CAN Protocol} \\
+     \textbf{Developer Tools \& OS}{: Linux (Fedora), GDB, CMake, Make, Git, Neovim, Vim} \\
+     \textbf{Software Testing \& Management}{: Test Automation, JIRA, Octane}
+    }
+ \end{itemize}
+ 
+%-----------PROJECTS-----------
+\section{PROJECTS}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Car Dashboard (Automotive CAN Simulator)}{\href{https://github.com/k0-R0/Car_Dashboard}{GitHub}}
+      {C, Embedded Systems, PIC18F4580, CAN Protocol, CLCD}{}
+      \resumeItemListStart
+        \resumeItem{Designed an automotive network simulator using PIC18 microcontrollers to transmit real-time vehicle telemetry (speed, RPM, gear, indicators) across a CAN bus.}
+        \resumeItem{Implemented state-driven display logic on a CLCD ECU to process incoming CAN network frames.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Arbitrary Precision Calculator (APC)}{\href{https://github.com/k0-R0/APC}{GitHub}}
+      {C, Data Structures, Algorithms, Dynamic Memory Allocation}{}
+      \resumeItemListStart
+        \resumeItem{Developed an arbitrary precision calculator in C capable of performing arithmetic operations on integers of arbitrary length, exceeding standard 64-bit data type limits.}
+        \resumeItem{Implemented doubly linked lists, custom arithmetic logic, sign management, and strict memory deallocation routines to guarantee zero memory leaks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Image Steganography (LSB)}{\href{https://github.com/k0-R0/Steganography}{GitHub}}
+      {C, Bit Manipulation, Image Processing, Binary File I/O}{}
+      \resumeItemListStart
+        \resumeItem{Built a C utility to hide encrypted text messages inside BMP images using Least Significant Bit (LSB) substitution techniques.}
+        \resumeItem{Engineered low-level bitwise mask/shift operations to embed and retrieve hidden data streams while preserving BMP header structure and image visual fidelity.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {MP3 Tag Reader \& Editor}{\href{https://github.com/k0-R0/MP3_TagReader}{GitHub}}
+      {C, Binary Parsing, File I/O, ID3v2 Tags}{}
+      \resumeItemListStart
+        \resumeItem{Created a command-line binary parser to read, extract, and edit ID3v2 metadata tags directly from raw MP3 audio streams.}
+        \resumeItem{Navigated byte offsets and frame headers in C to manipulate binary file buffers without corrupting audio payload data.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
 %-----------EXPERIENCE-----------
 \section{EXPERIENCE}
   \resumeSubHeadingListStart
@@ -127,82 +162,31 @@
       {Senior Quality Engineer I}{July 2024 -- January 2026}
       {Fresh Prints}{Remote}
       \resumeItemListStart
-        \resumeItem { Built a frontend performance testing infrastructure using Lighthouse, reducing manual testing time by 80\% through automated bi-weekly performance monitoring across all environments}
-        \resumeItem{Led data migration validation for 7000+ design records from Shopify to an actual CMS - Directus, developing custom validation scripts that ensured 100\% data integrity during platform transition}
-        \resumeItem{Identified critical P1 security vulnerabilities through pen testing tools like burpsuite that allowed unauthorized client data access, collaborating with the development team for immediate resolution}
+        \resumeItem{Built a frontend performance testing infrastructure using Lighthouse, reducing manual testing time by 80\% through automated bi-weekly performance monitoring across environments.}
+        \resumeItem{Led data migration validation for 7000+ design records from Shopify to Directus CMS, developing custom validation scripts that ensured 100\% data integrity.}
+        \resumeItem{Identified critical P1 security vulnerabilities through pen testing tools like Burp Suite, collaborating directly with developers for immediate patching.}
       \resumeItemListEnd
+
     \resumeSubheading
       {QA Automation Engineer}{June 2022 -- July 2024}
       {Cognizant Technology Solutions}{Bangalore, India}
       \resumeItemListStart
-        \resumeItem {Promoted from manual testing to automation after demonstrating strong technical aptitude and problem-solving skills in the first year}
-        \resumeItem{Automated user journeys across web applications covering multiple functionality, bringing up
-        the automation coverage}
-      \resumeItemListEnd
-      
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
-  \resumeSubHeadingListEnd
-
-%-----------PROJECTS-----------
-%-----------PROJECTS-----------
-\section{PROJECTS}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Arbitrary Precision Calculator (APC)}{ \href{https://github.com/k0-R0/APC}{Github}}
-      {C, Data Structures, Algorithms}{}
-      \resumeItemListStart
-        \resumeItem{Developed a calculator in C capable of performing arithmetic operations on integers of arbitrary size, exceeding the limits of standard types.}
-        \resumeItem{Handled edge cases including sign management, overflow prevention, and memory deallocation to ensure zero memory leaks during heavy computations.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Image Steganography (LSB)}{ \href{https://github.com/k0-R0/Steganography}{Github}}
-      {C, Bit Manipulation, Image Processing}{}
-      \resumeItemListStart
-        \resumeItem{Built a tool to conceal secret messages within BMP images using the Least Significant Bit (LSB) technique.}
-        \resumeItem{Implemented custom bitwise manipulation logic to embed data while maintaining image integrity and visual imperceptibility.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {MP3 Tag Reader \& Editor}{\href{https://github.com/k0-R0/MP3_TagReader}{Github}}
-      {C, Binary Parsing, File I/O}{}
-      \resumeItemListStart
-        \resumeItem{Developed a command-line utility for binary parsing and editing of ID3v2 metadata tags in MP3 files.}
-        \resumeItem{Gained deep experience in Binary File Handling by navigating file offsets and parsing frame headers to extract/modify titles, artists, and album information.}
+        \resumeItem{Promoted from manual testing to automation after demonstrating strong technical aptitude and problem-solving skills in the first year.}
+        \resumeItem{Automated user journeys across web applications covering multiple core business functionalities, significantly increasing test automation coverage.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
-%-----------EDUCATION-----------
-\section{EDUCATION}
+  
+%-----------EDUCATION & TRAINING-----------
+\section{EDUCATION \& TRAINING}
   \resumeSubHeadingListStart
+    \resumeSubheading
+      {Emertxe Information Technologies}{Bangalore, India}
+      {Advanced Embedded Systems Training (PIC18F4580, C/C++, Protocols, Linux)}{2025 -- 2026}
     \resumeSubheading
       {Amrita School of Engineering}{Kollam, Kerala}
       {Bachelor of Technology in Electronics and Communications Engineering}{June 2018 -- August 2022}
   \resumeSubHeadingListEnd
-
-
-
-%-----------PROGRAMMING SKILLS-----------
-\section{TECHNICAL SKILLS}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \item{
-     \textbf{Languages}{: C, C++, Java} \\
-     \textbf{VCS}{: Git} \\
-     \textbf{Tools}{: Make, GDB, Vim} \\
-     \textbf{Project Management Tool}{: Octane, JIRA} \\
-     \textbf{IDE}{: Neovim, Cursor} \\
-    }
- \end{itemize}
-
 
 %-------------------------------------------
 \end{document}
