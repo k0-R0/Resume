@@ -4,19 +4,39 @@ This workspace contains LaTeX resume templates based on Jake Gutierrez's clean s
 
 ---
 
-## 1. High-Level Resume Architecture & Layout Rules
+## 1. Resume Tracks & Layout Rules
 
-* **Page Limit**: Strictly **1 page**. Never allow content to spill over to a second page.
-* **Document Class**: `\documentclass[letterpaper,11pt]{article}`.
-* **Margins**: Narrow margins (`-0.5in` side, `1.0in` total text height extension) with `\raggedbottom` and `\raggedright`.
-* **ATS Compatibility**: `\pdfgentounicode=1` must always be included to ensure proper text parsing by Automated Tracking Systems.
-* **Target Role Positioning**:
-  * **Primary Target**: Embedded Systems Developer / Firmware Engineer / Low-Level Linux Systems Engineer.
-  * **Narrative Pivot**: Emphasize an Electronics and Communications Engineering (ECE) background, intensive training at Emertxe in Advanced Embedded Systems, and 4 years of software testing/quality discipline (QA Automation / Senior QE I) combined with bare-metal C/C++, microcontrollers (PIC18F4580), hardware protocols (CAN, UART, SPI, I2C), build systems (CMake, Make), and debugging (GDB).
+There are **two distinct resume tracks** maintained in this workspace:
+
+### A. `main.tex` — Standard 1-Page Professional Resume
+* **Page Limit**: Strictly **1 page**. Content must never spill over to a second page.
+* **Tone & Depth**: Highly professional, concise, and to the point.
+* **Projects Selection**: Curated selection of top projects with **exactly 2 punchy, high-impact bullet points** per project focusing on low-level C logic, system calls, protocols, and memory safety.
+* **Experience Section**: Professional descriptions highlighting test automation architecture, CI/CD performance monitoring, data validation scripts, and security assessments.
+
+### B. `emertxe.tex` — Exhaustive Multi-Page Technical Portfolio Resume
+* **Page Limit**: **Multi-page** (can be as many pages as needed for full technical depth).
+* **Tone & Depth**: Comprehensive, granular, and deeply technical portfolio format.
+* **Projects Section**: Exhaustive catalog of all projects completed at Emertxe (Car Dashboard, Minishell, Lexical Analyzer, Inverted Search Engine, MP3 Tag Reader, Steganography, APC, Address Book, etc.).
+* **Project Structure**: Every project contains:
+  * `\resumeSubheading{Project Title}{\href{URL}{Github}}{Tech Stack}{}`
+  * `\resumeItem{\textbf{Project brief:} <comprehensive overview>}`
+  * `\resumeItem{\textbf{Key challenges \& Learnings:}}`
+  * Nested `\resumeItemListStart ... \resumeItemListEnd` with 3+ detailed sub-bullets detailing register-level configurations, system calls, IPC, data structures, algorithms, and debugging routines.
 
 ---
 
-## 2. Standard Section Structure & Order
+## 2. Positioning & Anti-Pivot Rule
+
+* **Target Role**: Embedded Systems Developer / Firmware Engineer / Low-Level Linux Systems Engineer.
+* **Strict Anti-Pivot Rule**:
+  * **DO NOT** mention "pivoting", "transitioning", or shifting from SDET/QA to Embedded Systems anywhere in the objective, experience, or project descriptions.
+  * Position directly as an Embedded Systems & Firmware Engineer with an Electronics and Communications Engineering (ECE) background, intensive embedded systems training, and professional software engineering experience.
+  * Frame prior QA/QE roles purely in terms of technical excellence: automated test infrastructure architecture, backend data validation scripting, security vulnerability assessment, and quality discipline.
+
+---
+
+## 3. Section Sequence & Structure
 
 Every resume produced in this repository should follow this precise section sequence:
 
@@ -24,43 +44,39 @@ Every resume produced in this repository should follow this precise section sequ
    * Centered: **Name** (Huge bold `\scshape`).
    * Contact Line: `Phone | Email | LinkedIn | GitHub | Portfolio` using `\href{...}` for all URLs.
 
-2. **OBJECTIVE**
-   * A concise summary highlighting:
-     * Background as an ECE graduate with specialized embedded systems training.
+2. **OBJECTIVE / CAREER OBJECTIVE**
+   * Concise summary highlighting:
+     * ECE background and intensive training in Advanced Embedded Systems.
      * Hands-on expertise in bare-metal C/C++ development on PIC microcontrollers.
-     * Core technical competencies: hardware protocols (CAN, UART, SPI, I2C), memory-efficient data structures, GDB debugging on Linux, and hardware-software integration.
+     * Core competencies: hardware protocols (CAN, UART, SPI, I2C), memory-efficient data structures, Linux systems programming, and GDB debugging.
+     * **No pivot mentions**.
 
 3. **TECHNICAL SKILLS**
    * Positioned early (right after Objective) to immediately highlight core technical capabilities.
    * Grouped into clear categories:
-     * **Languages**: C, C++, Embedded C
+     * **Languages / Programming Languages**: C, C++, Embedded C (and Java if relevant)
      * **Microcontrollers & Protocols**: PIC18F4580, UART, I2C, SPI, CAN Protocol
      * **Developer Tools & OS**: Linux (Fedora), GDB, CMake, Make, Git, Neovim, Vim
      * **Software Testing & Management**: Test Automation, JIRA, Octane
 
-4. **PROJECTS**
-   * Positioned before Experience to emphasize core low-level programming and microcontroller achievements.
-   * **Rule**: Limit to the **top 4 projects** specifically chosen to highlight C, microcontrollers, protocols, memory safety, bit manipulation, and binary parsing.
-   * Format: `\resumeSubheading{Project Title (\href{URL}{GitHub})}{}{Tech Stack}{}`.
-   * 2 high-impact bullet points (`\resumeItem`) per project detailing design implementation, low-level logic, memory management, and hardware interaction.
+4. **PROJECTS / PROJECTS AT EMERTXE**
+   * `main.tex`: Curated top projects with 2 concise bullet points each.
+   * `emertxe.tex`: Full project catalog with Project Brief and Key Challenges & Learnings.
 
-5. **EXPERIENCE**
+5. **EXPERIENCE / WORK EXPERIENCE**
    * Reverse chronological order.
    * Format: `\resumeSubheading{Role}{Dates}{Company}{Location}`.
-   * Action-oriented bullet points (`\resumeItem`) focusing on technical achievements, performance optimizations, test infrastructure, and data integrity.
+   * Action-oriented bullet points focusing on engineering achievements, performance optimizations, test infrastructure, and data integrity.
 
-6. **EDUCATION & TRAINING**
-   * Combines institutional education and specialized embedded systems training.
-   * Format: `\resumeSubheading{Institution / University}{Location}{Degree / Program Title}{Dates}`.
-   * Includes:
-     * **Emertxe Information Technologies**: Advanced Embedded Systems Training (PIC18F4580, C/C++, Protocols, Linux).
-     * **Amrita School of Engineering**: Bachelor of Technology in Electronics and Communications Engineering.
+6. **EDUCATION & TRAINING** (or **EDUCATION** + **COURSE WORK**)
+   * **Emertxe Information Technologies**: Keep descriptions clean and focused (e.g., `Advanced Embedded Systems Training (PIC18F4580, C/C++, Protocols, Linux)` or `Aligned with Skill India / NSDC`). **Never** add qualification pack codes or sector skill council designations (e.g., QP ELE /Q1501).
+   * **Amrita School of Engineering**: Bachelor of Technology in Electronics and Communications Engineering.
 
 ---
 
-## 3. LaTeX Custom Macros Reference
+## 4. LaTeX Custom Macros Reference
 
-Always use these custom LaTeX commands defined in `main.tex`:
+Always use these custom LaTeX commands:
 
 ```latex
 \newcommand{\resumeItem}[1]{ \item {#1 \vspace{-2pt}} }
@@ -81,15 +97,14 @@ Always use these custom LaTeX commands defined in `main.tex`:
 
 ---
 
-## 4. Key Content Guidelines for Future Updates
+## 5. Project Catalog Reference
 
-1. **Top 4 Projects Selection**:
-   * **Car Dashboard (Automotive CAN Simulator)**: Demonstrates bare-metal microcontrollers (PIC18F4580), CAN protocol communication, and ECU display logic.
-   * **Arbitrary Precision Calculator (APC)**: Demonstrates advanced C programming, dynamic memory management, doubly linked lists, and zero-memory-leak logic.
-   * **Image Steganography (LSB)**: Demonstrates bitwise manipulation, header integrity, and image data processing in C.
-   * **MP3 Tag Reader & Editor**: Demonstrates binary file parsing, ID3v2 header navigation, and byte offset manipulation.
-
-2. **Skill Keyword Alignment**:
-   * Keep skills aligned with `https://k0-r0.github.io/` and GitHub repository `https://github.com/k0-R0`.
-   * Highlight C, C++, Embedded C, PIC18F4580, UART, I2C, SPI, CAN, GDB, CMake, Make, Git, Fedora Linux, Neovim, Vim, Test Automation.
-
+* **Car Dashboard (Automotive CAN Simulator)**: Bare-metal microcontrollers (PIC18F4580), CAN protocol communication, and CLCD dashboard ECU telemetry display.
+* **Car Black Box (Event Data Recorder)**: Bare-metal PIC16F877A firmware, I2C communication (DS1307 RTC & AT24C04 EEPROM), ADC speed sampling, and UART PC telemetry export.
+* **Minishell (Unix Command Shell)**: Linux systems programming, IPC ($N$-pipes via `pipe()` and `dup2()`), POSIX signal handling (`SIGINT`, `SIGTSTP`, `SIGCHLD`), and linked-list process job control (`jobs`, `fg`, `bg`).
+* **Lexical Analyzer for C**: Stream-based lexical tokenization in C11, $O(\log N)$ binary search lookup tables for keywords/operators/symbols, bracket balance tracking, and lexical error handling.
+* **Arbitrary Precision Calculator (APC)**: Infinite-precision arithmetic engine in C, dynamic memory allocation, doubly linked lists, and zero-memory-leak routines.
+* **Inverted Search Engine**: High-performance text searching and indexing system using custom hash tables with linked lists, persistence, and $O(1)$ lookups.
+* **Image Steganography (LSB)**: Bitwise manipulation (masking/shifting), 24-bit BMP header preservation, and secret message payload embedding.
+* **MP3 Tag Reader & Editor**: Binary stream parsing, ID3v2.3 frame header navigation, and audio payload integrity preservation.
+* **Address Book**: Dynamic memory allocation, CSV-like file persistence, and CLI contact management.

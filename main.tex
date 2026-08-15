@@ -102,7 +102,7 @@
 
 %-----------OBJECTIVE------------
 \section{OBJECTIVE}
-    {Embedded Systems \& Firmware Engineer with an ECE background and hands-on expertise in bare-metal C/C++ development on PIC microcontrollers. Strong foundation in hardware protocols (CAN, UART, SPI, I2C), memory-efficient data structures, and Linux-based debugging using GDB. Advanced training in low-level systems programming, and hardware-software integration.}
+    {Embedded Systems \& Firmware Engineer with an ECE background and hands-on expertise in bare-metal C/C++ development on PIC microcontrollers. Strong foundation in hardware protocols (CAN, UART, SPI, I2C), memory-efficient data structures, Linux systems programming, and GDB debugging. Dedicated to engineering robust, low-level firmware and embedded software solutions.}
 
 %-----------TECHNICAL SKILLS-----------
 \section{TECHNICAL SKILLS}
@@ -125,6 +125,30 @@
       \resumeItemListStart
         \resumeItem{Designed an automotive network simulator using PIC18 microcontrollers to transmit real-time vehicle telemetry (speed, RPM, gear, indicators) across a CAN bus.}
         \resumeItem{Implemented state-driven display logic on a CLCD ECU to process incoming CAN network frames.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Car Black Box (Event Data Recorder)}{\href{https://github.com/k0-R0/car_blackbox}{GitHub}}
+      {Embedded C, PIC16F877A, I2C, UART, ADC, EEPROM, RTC, CLCD}{}
+      \resumeItemListStart
+        \resumeItem{Engineered an automotive black box on PIC16F877A microcontrollers to log vehicle speed, gear positions, and RTC timestamps into external EEPROM via I2C using a circular buffer.}
+        \resumeItem{Developed bare-metal drivers for ADC speed sampling, matrix keypad debouncing, CLCD dashboard display, and UART serial communication for PC telemetry export.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Minishell (Unix Command Shell)}{\href{https://github.com/k0-R0/Minishell}{GitHub}}
+      {C, Linux Systems Programming, IPC, Process Management, Signals}{}
+      \resumeItemListStart
+        \resumeItem{Built a custom POSIX Unix command shell supporting built-in commands, dynamic prompt customization, and $N$-pipe command chaining via \texttt{pipe()} and \texttt{dup2()} file descriptor redirection.}
+        \resumeItem{Engineered signal handling (\texttt{SIGINT}, \texttt{SIGTSTP}, \texttt{SIGCHLD}) and job control mechanisms using linked lists to manage suspended and background processes with \texttt{waitpid()}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Lexical Analyzer for C}{\href{https://github.com/k0-R0/Lexical-Analyzer}{GitHub}}
+      {C, Lexical Analysis, Tokenization, Binary Search, File I/O}{}
+      \resumeItemListStart
+        \resumeItem{Developed a stream-based lexical tokenizer in C to extract tokens (keywords, identifiers, literals, operators) from C source files using $O(\log N)$ binary search lookup tables.}
+        \resumeItem{Implemented comment/preprocessor stripping, bracket balance tracking (\texttt{()}, \texttt{\{\}}, \texttt{[]}), and lexical validation for unterminated strings and invalid identifiers.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -162,17 +186,17 @@
       {Senior Quality Engineer I}{July 2024 -- January 2026}
       {Fresh Prints}{Remote}
       \resumeItemListStart
-        \resumeItem{Built a frontend performance testing infrastructure using Lighthouse, reducing manual testing time by 80\% through automated bi-weekly performance monitoring across environments.}
-        \resumeItem{Led data migration validation for 7000+ design records from Shopify to Directus CMS, developing custom validation scripts that ensured 100\% data integrity.}
-        \resumeItem{Identified critical P1 security vulnerabilities through pen testing tools like Burp Suite, collaborating directly with developers for immediate patching.}
+        \resumeItem{Architected an automated frontend performance testing infrastructure with Lighthouse, cutting execution time by 80\% through bi-weekly automated CI monitoring.}
+        \resumeItem{Engineered backend validation scripts for platform-wide migration of 7,000+ design records to Directus CMS, guaranteeing 100\% data integrity.}
+        \resumeItem{Conducted security vulnerability assessments with Burp Suite, isolating critical P1 vulnerabilities for immediate developer remediation.}
       \resumeItemListEnd
 
     \resumeSubheading
       {QA Automation Engineer}{June 2022 -- July 2024}
       {Cognizant Technology Solutions}{Bangalore, India}
       \resumeItemListStart
-        \resumeItem{Promoted from manual testing to automation after demonstrating strong technical aptitude and problem-solving skills in the first year.}
-        \resumeItem{Automated user journeys across web applications covering multiple core business functionalities, significantly increasing test automation coverage.}
+        \resumeItem{Developed scalable automated end-to-end test suites across multi-tier web applications, increasing test automation coverage and release reliability.}
+        \resumeItem{Collaborated with engineering teams to analyze system specifications, build automated test frameworks, and enforce rigorous quality gates.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
