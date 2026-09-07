@@ -8,11 +8,11 @@ This workspace contains LaTeX resume templates based on Jake Gutierrez's clean s
 
 There are **two distinct resume tracks** maintained in this workspace:
 
-### A. `main.tex` — Standard 1-Page Professional Resume
-* **Page Limit**: Strictly **1 page**. Content must never spill over to a second page.
-* **Tone & Depth**: Highly professional, concise, and to the point.
-* **Projects Selection**: Curated selection of top projects with **exactly 2 punchy, high-impact bullet points** per project focusing on low-level C logic, system calls, protocols, and memory safety.
-* **Experience Section**: Professional descriptions highlighting test automation architecture, CI/CD performance monitoring, data validation scripts, and security assessments.
+### A. `main.tex` — Standard Professional Resume
+* **Page Limit**: Standard **2-page format** reflecting ~4 years of software engineering & test automation experience alongside embedded systems & firmware projects.
+* **Tone & Depth**: Highly professional, concise, and technically grounded for Embedded / Systems Engineer roles. Free of corporate buzzwords.
+* **Projects Selection**: Embedded & systems projects with **exactly 2 punchy, high-impact bullet points** per project focusing on bare-metal firmware, low-level C logic, system calls, protocols, and memory safety.
+* **Experience Section**: Professional descriptions highlighting test automation architecture, CI/CD performance monitoring, data validation scripts, security assessments, and API validation.
 
 ### B. `emertxe.tex` — Exhaustive Multi-Page Technical Portfolio Resume
 * **Page Limit**: **Multi-page** (can be as many pages as needed for full technical depth).
@@ -99,12 +99,25 @@ Always use these custom LaTeX commands:
 
 ## 5. Project Catalog Reference
 
-* **Car Dashboard (Automotive CAN Simulator)**: Bare-metal microcontrollers (PIC18F4580), CAN protocol communication, and CLCD dashboard ECU telemetry display.
-* **Car Black Box (Event Data Recorder)**: Bare-metal PIC16F877A firmware, I2C communication (DS1307 RTC & AT24C04 EEPROM), ADC speed sampling, and UART PC telemetry export.
 * **Minishell (Unix Command Shell)**: Linux systems programming, IPC ($N$-pipes via `pipe()` and `dup2()`), POSIX signal handling (`SIGINT`, `SIGTSTP`, `SIGCHLD`), and linked-list process job control (`jobs`, `fg`, `bg`).
-* **Lexical Analyzer for C**: Stream-based lexical tokenization in C11, $O(\log N)$ binary search lookup tables for keywords/operators/symbols, bracket balance tracking, and lexical error handling.
-* **Arbitrary Precision Calculator (APC)**: Infinite-precision arithmetic engine in C, dynamic memory allocation, doubly linked lists, and zero-memory-leak routines.
-* **Inverted Search Engine**: High-performance text searching and indexing system using custom hash tables with linked lists, persistence, and $O(1)$ lookups.
+* **Car Black Box (Event Data Recorder)**: Bare-metal PIC16F877A firmware, I2C communication (DS1307 RTC & AT24C04 EEPROM), ADC speed sampling, and UART PC telemetry export.
 * **Image Steganography (LSB)**: Bitwise manipulation (masking/shifting), 24-bit BMP header preservation, and secret message payload embedding.
+* **Car Dashboard (Automotive CAN Simulator)**: Bare-metal microcontrollers (PIC18F4580), CAN protocol communication, and CLCD dashboard ECU telemetry display.
+* **Lexical Analyzer for C**: Stream-based lexical tokenization in C11, $O(\log N)$ binary search lookup tables for keywords/operators/symbols, bracket balance tracking, and lexical error handling.
+* **Inverted Search Engine**: High-performance text searching and indexing system using custom hash tables with linked lists, persistence, and $O(1)$ lookups.
+* **Source2HTML (C Source to HTML Converter)**: Event-driven C source code syntax highlighting engine using a multi-state finite state machine (FSM), CSS class token mapping, HTML entity escaping, and CLI line-numbering.
 * **MP3 Tag Reader & Editor**: Binary stream parsing, ID3v2.3 frame header navigation, and audio payload integrity preservation.
+* **Arbitrary Precision Calculator (APC)**: Infinite-precision arithmetic engine in C, dynamic memory allocation, doubly linked lists, and zero-memory-leak routines.
 * **Address Book**: Dynamic memory allocation, CSV-like file persistence, and CLI contact management.
+
+---
+
+## 6. Commit & Versioning Guidelines
+
+All commits must follow the semantic versioning standard prefixed to the commit message:
+`vX.Y.Z: <brief description of what was changed>`
+
+* **Major version (`X`, +1.0.0)**: Major structural changes, complete resume rewrites, adding new career tracks/roles, or repo-wide tooling overhauls.
+* **Minor version (`Y`, +0.1.0)**: Weekly updates, adding a new project, or substantial section enhancements.
+* **Patch version (`Z`, +0.0.1)**: Minor details, phrasing tweaks, typo fixes, or spacing adjustments.
+

@@ -18,7 +18,11 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+\usepackage{iftex}
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 
 %----------FONT OPTIONS----------
@@ -57,8 +61,6 @@
   \vspace{-4pt}\scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
 
 %-------------------------
 % Custom commands
@@ -133,15 +135,15 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Car Dashboard (Automotive CAN Simulator)}{\href{https://github.com/k0-R0/Car_Dashboard}{Github}}
-      {C, Embedded Systems, PIC18F4580, CAN Protocol, CLCD}{}
+      {Minishell (Unix Command Shell)}{\href{https://github.com/k0-R0/Minishell}{Github}}
+      {C, Linux Systems Programming, IPC, Process Management, Signals}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Engineered an automotive network simulator using PIC18 microcontrollers to transmit and display real-time vehicle telemetry (speed, RPM, gear, indicators) across a Controller Area Network (CAN) bus to a central CLCD dashboard ECU.}
+        \resumeItem{\textbf{Project brief:} Developed a custom Unix command-line shell in C to master Linux system calls, process lifecycles, and inter-process communication. The shell supports internal built-in commands, external binary execution, multi-command pipelining, signal handling, dynamic prompt customization, and interactive job control.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Designed and implemented state-driven display logic on a CLCD ECU to process incoming CAN network frames in real-time.}
-            \resumeItem{Managed hardware peripherals, register configurations, and interrupt-driven CAN communication protocols on bare-metal PIC microcontrollers.}
-            \resumeItem{Simulated dynamic vehicle state transitions and sensor data encoding to maintain synchronized data transmission across nodes.}
+            \resumeItem{Implemented $N$-pipe command chaining using \texttt{pipe()} and \texttt{dup2()} file descriptor redirection, managing concurrent process pipelines and synchronizing termination with \texttt{waitpid()}.}
+            \resumeItem{Engineered asynchronous signal handling for \texttt{SIGINT}, \texttt{SIGTSTP}, and \texttt{SIGCHLD} to support job control, enabling foreground process suspension and background/foreground resumption (\texttt{bg}/\texttt{fg}).}
+            \resumeItem{Designed a dynamic job control tracking subsystem using singly linked lists to record, update, and manage suspended process IDs and execution states.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -159,15 +161,28 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       \resumeItemListEnd
 
     \resumeSubheading
-      {Minishell (Unix Command Shell)}{\href{https://github.com/k0-R0/Minishell}{Github}}
-      {C, Linux Systems Programming, IPC, Process Management, Signals}{}
+      {Image Steganography (LSB)}{\href{https://github.com/k0-R0/Steganography}{Github}}
+      {C, Bit Manipulation, Image Processing, Binary File I/O}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Developed a custom Unix command-line shell in C to master Linux system calls, process lifecycles, and inter-process communication. The shell supports internal built-in commands, external binary execution, multi-command pipelining, signal handling, dynamic prompt customization, and interactive job control.}
+        \resumeItem{\textbf{Project brief:} Built a secure data concealment tool capable of hiding encrypted secret messages within standard 24-bit BMP images using the Least Significant Bit (LSB) substitution technique. The application parses the BMP header to protect critical image metadata and then iterates through the pixel array to embed data bits into the LSB of the RGB color channels, ensuring the hidden information remains visually imperceptible even under close inspection.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Implemented $N$-pipe command chaining using \texttt{pipe()} and \texttt{dup2()} file descriptor redirection, managing concurrent process pipelines and synchronizing termination with \texttt{waitpid()}.}
-            \resumeItem{Engineered asynchronous signal handling for \texttt{SIGINT}, \texttt{SIGTSTP}, and \texttt{SIGCHLD} to support job control, enabling foreground process suspension and background/foreground resumption (\texttt{bg}/\texttt{fg}).}
-            \resumeItem{Designed a dynamic job control tracking subsystem using singly linked lists to record, update, and manage suspended process IDs and execution states.}
+            \resumeItem{Implemented precise bitwise manipulation (masking, shifting, and XORing) to embed data without altering the structural integrity of the file.}
+            \resumeItem{Deepened understanding of image file formats and the importance of preserving header signatures (e.g., 'BM' magic bytes) during processing.}
+            \resumeItem{Optimized the embedding algorithm to handle variable-sized payloads while maintaining a balance between data capacity and image quality.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Car Dashboard (Automotive CAN Simulator)}{\href{https://github.com/k0-R0/Car_Dashboard}{Github}}
+      {C, Embedded Systems, PIC18F4580, CAN Protocol, CLCD}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Engineered an automotive network simulator using PIC18 microcontrollers to transmit and display real-time vehicle telemetry (speed, RPM, gear, indicators) across a Controller Area Network (CAN) bus to a central CLCD dashboard ECU.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Designed and implemented state-driven display logic on a CLCD ECU to process incoming CAN network frames in real-time.}
+            \resumeItem{Managed hardware peripherals, register configurations, and interrupt-driven CAN communication protocols on bare-metal PIC microcontrollers.}
+            \resumeItem{Simulated dynamic vehicle state transitions and sensor data encoding to maintain synchronized data transmission across nodes.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -198,6 +213,19 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       \resumeItemListEnd
 
     \resumeSubheading
+      {Source2HTML (C Source to HTML Syntax Highlighter)}{\href{https://github.com/k0-R0/Source-2-HTML}{Github}}
+      {C, State Machines, Lexical Analysis, File I/O, HTML/CSS}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Engineered an event-driven C source code syntax highlighting engine in C that parses source files via a multi-state finite state machine (FSM) and generates fully styled HTML documents. The engine tokenizes C syntax into discrete parser events (keywords, preprocessor directives, strings, ASCII chars, comments, numeric constants), formats them into CSS-styled \texttt{span} classes with HTML entity escaping (\texttt{\&lt;}, \texttt{\&gt;}, \texttt{\&amp;}), and supports optional line numbering via CLI flags.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Engineered a modular State-Event Parser Engine using a multi-state FSM (\texttt{PSTATE\_IDLE}, preprocessor, keywords, literals, comments) to accurately tokenize complex C syntax constructs.}
+            \resumeItem{Implemented categorized keyword and directive classification with property tagging (\texttt{RES\_KEYWORD\_DATA}, \texttt{RES\_KEYWORD\_NON\_DATA}, user/standard headers) for granular CSS syntax highlighting.}
+            \resumeItem{Designed a robust HTML generator handling character-level entity escaping, multi-line stream formatting, and synchronized line numbering without corrupting code layout.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
       {MP3 Tag Reader \& Editor}{\href{https://github.com/k0-R0/MP3_TagReader}{Github}}
       {C, Binary Parsing, File I/O, ID3v2 Tags}{}
       \resumeItemListStart
@@ -207,19 +235,6 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
             \resumeItem{Mastered binary file handling by precisely navigating file offsets and managing byte-level data alignment.}
             \resumeItem{Interpreted complex technical specifications to correctly parse different frame versions and handle text encoding (UTF-8/ISO-8859-1).}
             \resumeItem{Ensured data integrity by validating file headers and implementing safe write-back mechanisms to prevent audio file corruption.}
-        \resumeItemListEnd
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Image Steganography (LSB)}{\href{https://github.com/k0-R0/Steganography}{Github}}
-      {C, Bit Manipulation, Image Processing, Binary File I/O}{}
-      \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Built a secure data concealment tool capable of hiding encrypted secret messages within standard 24-bit BMP images using the Least Significant Bit (LSB) substitution technique. The application parses the BMP header to protect critical image metadata and then iterates through the pixel array to embed data bits into the LSB of the RGB color channels, ensuring the hidden information remains visually imperceptible even under close inspection.}
-        \resumeItem{\textbf{Key challenges \& Learnings:}}
-        \resumeItemListStart
-            \resumeItem{Implemented precise bitwise manipulation (masking, shifting, and XORing) to embed data without altering the structural integrity of the file.}
-            \resumeItem{Deepened understanding of image file formats and the importance of preserving header signatures (e.g., 'BM' magic bytes) during processing.}
-            \resumeItem{Optimized the embedding algorithm to handle variable-sized payloads while maintaining a balance between data capacity and image quality.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -292,7 +307,7 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
   \resumeSubHeadingListStart
     \resumeSubheading
       {Amrita School of Engineering}{Kollam, Kerala}
-      {Bachelor of Technology in Electronics and Communications Engineering (CGPA: 8.1/10)}{June 2018 -- August 2022}
+      {B.Tech in Electronics and Communications Engineering (CGPA: 8.1/10)}{June 2018 -- August 2022}
   \resumeSubHeadingListEnd
 
 \end{document}
