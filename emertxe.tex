@@ -47,8 +47,8 @@
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
 
 \urlstyle{same}
 
@@ -97,7 +97,7 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[topsep=2pt, itemsep=2pt, parsep=0pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
@@ -125,7 +125,7 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
     \item{
      \textbf{Programming Languages}{: C, C++, Embedded C, Java} \\
      \textbf{Microcontrollers \& Protocols}{: PIC18F4580, UART, I2C, SPI, CAN Protocol} \\
-     \textbf{Developer Tools \& OS}{: Linux (Fedora), GDB, CMake, Make, Git, Neovim, Vim, Cursor} \\
+     \textbf{Developer Tools \& OS}{: Linux (Fedora), GDB, Make, Git, Neovim, Vim, Cursor} \\
      \textbf{Software Testing \& Management}{: Test Automation, JIRA, Octane}
     }
  \end{itemize}
@@ -138,25 +138,41 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {Minishell (Unix Command Shell)}{\href{https://github.com/k0-R0/Minishell}{Github}}
       {C, Linux Systems Programming, IPC, Process Management, Signals}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Developed a custom Unix command-line shell in C to master Linux system calls, process lifecycles, and inter-process communication. The shell supports internal built-in commands, external binary execution, multi-command pipelining, signal handling, dynamic prompt customization, and interactive job control.}
+        \resumeItem{\textbf{Project brief:} Built a custom Unix command shell in C to understand how Linux manages processes and system calls. The shell supports executing programs, internal built-in commands, multi-stage pipes, signal handling, custom prompts, and job control.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Implemented $N$-pipe command chaining using \texttt{pipe()} and \texttt{dup2()} file descriptor redirection, managing concurrent process pipelines and synchronizing termination with \texttt{waitpid()}.}
-            \resumeItem{Engineered asynchronous signal handling for \texttt{SIGINT}, \texttt{SIGTSTP}, and \texttt{SIGCHLD} to support job control, enabling foreground process suspension and background/foreground resumption (\texttt{bg}/\texttt{fg}).}
-            \resumeItem{Designed a dynamic job control tracking subsystem using singly linked lists to record, update, and manage suspended process IDs and execution states.}
+            \resumeItem{Chained multiple commands using \texttt{pipe()} and redirected standard streams with \texttt{dup2()}, synchronizing process completion using \texttt{waitpid()}.}
+            \resumeItem{Added signal handling for \texttt{SIGINT}, \texttt{SIGTSTP}, and \texttt{SIGCHLD} to suspend foreground jobs and resume them in the background or foreground (\texttt{bg}/\texttt{fg}).}
+            \resumeItem{Used a singly linked list to track process IDs and execution states for background and stopped jobs.}
         \resumeItemListEnd
       \resumeItemListEnd
 
     \resumeSubheading
-      {Car Black Box (Event Data Recorder)}{\href{https://github.com/k0-R0/car_blackbox}{Github}}
-      {Embedded C, PIC16F877A, I2C, UART, ADC, EEPROM, RTC (DS1307), CLCD}{}
+      {Multithreaded TFTP Server \& Client}{\href{https://github.com/k0-R0/TFTP}{Github}}
+      {C, UDP Sockets, POSIX Threads, Semaphores, Systems Programming}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Developed an automotive event data recording system (Black Box) on a PIC16F877A microcontroller in Embedded C to continuously monitor vehicle parameters and record critical crash/event telemetry. The system logs real-time timestamps (DS1307 RTC), gear transitions, and potentiometer-sampled vehicle speed (ADC), storing 12-byte event records in external EEPROM in a circular buffer with on-screen menu navigation and UART PC export.}
+        \resumeItem{\textbf{Project brief:} Built a multithreaded TFTP file transfer server and client in C over UDP sockets. The server handles multiple file uploads and downloads at the same time by spawning worker threads, using a counting semaphore to prevent server overload and a stop-and-wait protocol for reliable delivery over UDP.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Implemented low-level I2C master communication protocols to interface with the DS1307 Real-Time Clock and AT24C04 EEPROM on a shared two-wire bus.}
-            \resumeItem{Engineered a non-volatile circular buffer storage algorithm in EEPROM with event index tracking to store and retrieve structured 12-byte telemetry records across power resets.}
-            \resumeItem{Developed bare-metal drivers for ADC speed potentiometer sampling, matrix keypad debouncing, 16x2 CLCD UI rendering, and UART serial communication (9600 Baud) for PC telemetry export.}
+            \resumeItem{Capped active worker threads at 10 using a counting semaphore (\texttt{sem\_t}); used non-blocking \texttt{sem\_trywait()} so the main server loop immediately replies with a ``Server is busy'' packet when full without freezing.}
+            \resumeItem{Gave each worker thread its own ephemeral UDP socket to avoid packet collisions, and configured threads as detached (\texttt{PTHREAD\_CREATE\_DETACHED}) so memory and resources are freed automatically on exit.}
+            \resumeItem{Built a stop-and-wait acknowledgment protocol with custom packet structs (\texttt{cmd\_packet}, \texttt{data\_packet}, \texttt{ack\_packet}) to track 512-byte block sequence numbers and resend unacknowledged blocks over UDP.}
+            \resumeItem{Supported 3 transfer modes---standard binary (\texttt{MODE\_OCTET}), single-byte blocks, and a mail mode that converts \texttt{\textbackslash n} to \texttt{\textbackslash n\textbackslash r}---along with an interactive CLI client for batch file transfers.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+  \newpage
+
+    \resumeSubheading
+      {Car Black Box (Event Data Recorder)}{\href{https://github.com/k0-R0/car_blackbox}{Github}}
+      {Embedded C, PIC18F4580, I2C, UART, ADC, EEPROM, RTC, LCD}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built an event data recorder on a PIC18F4580 microcontroller in Embedded C to log vehicle telemetry during driving and crash events. The system records timestamps from an external RTC, gear shifts, and speed potentiometer values, saving the 10 most recent records in an external EEPROM with an LCD menu and serial PC export.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Wrote bare-metal I2C master routines to communicate with the DS1307 real-time clock and AT24C04 EEPROM on a shared two-wire bus.}
+            \resumeItem{Built a non-volatile circular buffer in EEPROM that retains the 10 latest event records across power resets.}
+            \resumeItem{Wrote drivers for ADC potentiometer speed sampling, matrix keypad debouncing, a 16x2 LCD menu, and UART serial communication at 9600 baud.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -164,25 +180,25 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {Image Steganography (LSB)}{\href{https://github.com/k0-R0/Steganography}{Github}}
       {C, Bit Manipulation, Image Processing, Binary File I/O}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Built a secure data concealment tool capable of hiding encrypted secret messages within standard 24-bit BMP images using the Least Significant Bit (LSB) substitution technique. The application parses the BMP header to protect critical image metadata and then iterates through the pixel array to embed data bits into the LSB of the RGB color channels, ensuring the hidden information remains visually imperceptible even under close inspection.}
+        \resumeItem{\textbf{Project brief:} Built a command-line tool in C to hide and extract text messages inside 24-bit BMP images using the Least Significant Bit (LSB) technique. The program verifies the BMP header and embeds message bits into RGB pixel bytes without visibly changing the image.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Implemented precise bitwise manipulation (masking, shifting, and XORing) to embed data without altering the structural integrity of the file.}
-            \resumeItem{Deepened understanding of image file formats and the importance of preserving header signatures (e.g., 'BM' magic bytes) during processing.}
-            \resumeItem{Optimized the embedding algorithm to handle variable-sized payloads while maintaining a balance between data capacity and image quality.}
+            \resumeItem{Used bit masking and shifting to replace the least significant bits of image pixel data with message payload bits.}
+            \resumeItem{Protected the 54-byte BMP header to keep file metadata intact and ensure the modified image opens in standard image viewers.}
+            \resumeItem{Stored message size and magic string signatures inside the image so the decoder can verify and extract the exact secret data.}
         \resumeItemListEnd
       \resumeItemListEnd
 
     \resumeSubheading
       {Car Dashboard (Automotive CAN Simulator)}{\href{https://github.com/k0-R0/Car_Dashboard}{Github}}
-      {C, Embedded Systems, PIC18F4580, CAN Protocol, CLCD}{}
+      {C, Embedded Systems, PIC18F4580, CAN Protocol, LCD}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Engineered an automotive network simulator using PIC18 microcontrollers to transmit and display real-time vehicle telemetry (speed, RPM, gear, indicators) across a Controller Area Network (CAN) bus to a central CLCD dashboard ECU.}
+        \resumeItem{\textbf{Project brief:} Built an automotive dashboard simulator using two PIC18F4580 microcontrollers communicating over a CAN bus. One microcontroller acts as an engine ECU broadcasting speed, RPM, and gear status, while the second acts as a dashboard ECU and renders the data on an LCD.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Designed and implemented state-driven display logic on a CLCD ECU to process incoming CAN network frames in real-time.}
-            \resumeItem{Managed hardware peripherals, register configurations, and interrupt-driven CAN communication protocols on bare-metal PIC microcontrollers.}
-            \resumeItem{Simulated dynamic vehicle state transitions and sensor data encoding to maintain synchronized data transmission across nodes.}
+            \resumeItem{Configured PIC18F4580 CAN registers, message identifiers, and interrupts to broadcast vehicle telemetry frames.}
+            \resumeItem{Wrote display logic on the receiver ECU to filter incoming CAN frames, unpack data bytes, and update the dashboard LCD in real time.}
+            \resumeItem{Simulated driving state changes and sensor inputs to test synchronized communication across the CAN bus.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -190,25 +206,27 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {Lexical Analyzer for C}{\href{https://github.com/k0-R0/Lexical-Analyzer}{Github}}
       {C, Lexical Analysis, Tokenization, Binary Search, File I/O}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Engineered a modular, stream-based Lexical Analyzer (Tokenizer) in C to parse and validate C source code files. The engine strips preprocessor directives and comments, extracts and classifies source characters into structured lexical tokens (Keywords, Identifiers, Operators, Symbols, Literals), and enforces grammatical lexical validations.}
+        \resumeItem{\textbf{Project brief:} Built a C source code tokenizer that reads files character-by-character, strips comments and preprocessor lines, and groups code into keywords, identifiers, constants, strings, and operators.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Constructed high-speed $O(\log N)$ binary search lookup tables for C keywords, multi-character operators, and punctuation symbols to achieve optimal token classification.}
-            \resumeItem{Designed character stream parsing state logic to strip preprocessor directives and nested single/multi-line comments without distorting line and column tracking.}
-            \resumeItem{Implemented comprehensive lexical error detection routines, including bracket balance verification (\texttt{()}, \texttt{\{\}}, \texttt{[]}), unterminated string/character literals, and malformed identifier detection.}
+            \resumeItem{Used binary search ($O(\log N)$) over sorted symbol arrays to quickly look up and identify C keywords and operators.}
+            \resumeItem{Built parser state logic to cleanly remove single-line (\texttt{//}) and multi-line (\texttt{/* */}) comments while preserving line numbers.}
+            \resumeItem{Added syntax validation to catch unmatched parentheses, brackets, and braces (\texttt{()}, \texttt{\{\}}, \texttt{[]}), as well as unclosed strings.}
         \resumeItemListEnd
       \resumeItemListEnd
+
+  \newpage
 
     \resumeSubheading
       {Inverted Search Engine}{\href{https://github.com/k0-R0/Inverted_SearchEngine}{Github}}
       {C, Hash Tables, File I/O, Data Structures}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Engineered a high-performance searching and indexing system designed to handle large-scale text datasets efficiently. The core of the system is an Inverted Index built using a custom Hash Table where each entry points to a linked list of document metadata. It supports automated file parsing, database creation, persistent storage (backup/restore), and instantaneous word lookups with comprehensive frequency and location statistics across multiple source files.}
+        \resumeItem{\textbf{Project brief:} Built a text indexing and search engine in C. The program scans text files, builds an inverted index using a custom hash table, and maps each word to a linked list of file occurrences for fast keyword lookups.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Designed and implemented a collision-resistant hash function to ensure O(1) average-case time complexity for indexing and retrieval.}
-            \resumeItem{Managed complex nested data structures (dynamic arrays of linked lists) while maintaining strict memory efficiency and zero leaks.}
-            \resumeItem{Implemented robust error handling for file stream operations and validation logic for corrupted or empty database files.}
+            \resumeItem{Implemented a hash table with linked-list collision handling to index and retrieve search terms in $O(1)$ average time.}
+            \resumeItem{Parsed multiple text files to track word counts, file names, and sentence positions without duplicating memory.}
+            \resumeItem{Added file persistence routines to save the generated database to disk and reload it without re-parsing files.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -216,12 +234,12 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {Source2HTML (C Source to HTML Syntax Highlighter)}{\href{https://github.com/k0-R0/Source-2-HTML}{Github}}
       {C, State Machines, Lexical Analysis, File I/O, HTML/CSS}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Engineered an event-driven C source code syntax highlighting engine in C that parses source files via a multi-state finite state machine (FSM) and generates fully styled HTML documents. The engine tokenizes C syntax into discrete parser events (keywords, preprocessor directives, strings, ASCII chars, comments, numeric constants), formats them into CSS-styled \texttt{span} classes with HTML entity escaping (\texttt{\&lt;}, \texttt{\&gt;}, \texttt{\&amp;}), and supports optional line numbering via CLI flags.}
+        \resumeItem{\textbf{Project brief:} Built a C program that converts C source code into syntax-highlighted HTML files. It scans code using a finite state machine, classifies tokens (keywords, comments, strings, preprocessor lines), and wraps them in CSS-styled HTML tags.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Engineered a modular State-Event Parser Engine using a multi-state FSM (\texttt{PSTATE\_IDLE}, preprocessor, keywords, literals, comments) to accurately tokenize complex C syntax constructs.}
-            \resumeItem{Implemented categorized keyword and directive classification with property tagging (\texttt{RES\_KEYWORD\_DATA}, \texttt{RES\_KEYWORD\_NON\_DATA}, user/standard headers) for granular CSS syntax highlighting.}
-            \resumeItem{Designed a robust HTML generator handling character-level entity escaping, multi-line stream formatting, and synchronized line numbering without corrupting code layout.}
+            \resumeItem{Built a state machine with distinct states (idle, string, comment, directive, number) to accurately parse complex C syntax.}
+            \resumeItem{Mapped tokens to CSS color classes to highlight data types, control keywords, and preprocessor directives distinctly.}
+            \resumeItem{Escaped special HTML characters (\texttt{\&lt;}, \texttt{\&gt;}, \texttt{\&amp;}) to prevent browser rendering errors, and added an option for line numbering.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -229,12 +247,12 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {MP3 Tag Reader \& Editor}{\href{https://github.com/k0-R0/MP3_TagReader}{Github}}
       {C, Binary Parsing, File I/O, ID3v2 Tags}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Developed a sophisticated command-line utility for low-level binary parsing and modification of ID3v2 metadata tags in MP3 files. The project involved deep-diving into the ID3v2.3 specification to navigate variable-length frame headers and data offsets. The tool allows users to view and update critical metadata such as Title, Artist, and Album info directly within the binary stream without affecting the underlying audio synchronization.}
+        \resumeItem{\textbf{Project brief:} Built a command-line tool in C to inspect and edit ID3v2 metadata (title, artist, album) inside MP3 files without altering the audio data.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Mastered binary file handling by precisely navigating file offsets and managing byte-level data alignment.}
-            \resumeItem{Interpreted complex technical specifications to correctly parse different frame versions and handle text encoding (UTF-8/ISO-8859-1).}
-            \resumeItem{Ensured data integrity by validating file headers and implementing safe write-back mechanisms to prevent audio file corruption.}
+            \resumeItem{Parsed ID3v2.3 binary frame headers and calculated variable-length frame sizes to navigate file offsets.}
+            \resumeItem{Handled big-endian byte conversions to accurately read frame size descriptors from binary files.}
+            \resumeItem{Safely updated tag metadata in-place within the file header without corrupting the underlying MP3 audio stream.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -242,12 +260,12 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {Arbitrary Precision Calculator (APC)}{\href{https://github.com/k0-R0/APC}{Github}}
       {C, Data Structures, Algorithms, Dynamic Memory Allocation}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} Developed a custom computational engine in C capable of performing standard arithmetic operations (Addition, Subtraction, Multiplication, Division) on integers of arbitrary size, effectively bypassing the 64-bit limits of standard data types. The system utilizes a doubly linked list architecture where each node stores a segment of the large number, paired with custom arithmetic algorithms to manage carries, borrows, and sign management for infinite-precision results.}
+        \resumeItem{\textbf{Project brief:} Built an arbitrary-precision calculator in C using doubly linked lists, allowing mathematical operations on numbers of any size without being limited by 64-bit data types.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Engineered complex arithmetic logic for base-10 operations across node boundaries, including handling multi-digit carries and borrows.}
-            \resumeItem{Focused on memory optimization by implementing dynamic allocation/deallocation strategies to handle computations involving thousands of digits without memory leaks.}
-            \resumeItem{Developed unit tests for edge cases such as zero handling, large negative results, and division by zero errors.}
+            \resumeItem{Wrote arithmetic algorithms for addition, subtraction, multiplication, and division across linked list nodes, handling carries and borrows digit-by-digit.}
+            \resumeItem{Handled dynamic memory allocation and cleanup carefully to ensure zero memory leaks during large arithmetic calculations.}
+            \resumeItem{Handled edge cases including sign management (positive/negative results), zero padding, and division-by-zero checks.}
         \resumeItemListEnd
       \resumeItemListEnd
 
@@ -255,16 +273,18 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       {Address Book}{\href{https://github.com/k0-R0/AddressBook}{Github}}
       {C, Data Structures, File I/O, CLI}{}
       \resumeItemListStart
-        \resumeItem{\textbf{Project brief:} A robust command-line contact management system built to demonstrate advanced mastery of dynamic memory allocation and structured data handling. Features include creating, searching, editing, and deleting contacts with full file-based persistence. The application ensures that user data is saved across sessions by implementing a custom CSV-like parsing and writing engine for local storage.}
+        \resumeItem{\textbf{Project brief:} Built a command-line contact management tool in C to store, search, edit, and delete contacts, saving all entries to a CSV file for persistent storage.}
         \resumeItem{\textbf{Key challenges \& Learnings:}}
         \resumeItemListStart
-            \resumeItem{Implemented efficient searching and sorting algorithms (e.g., search by name/email/phone) within a dynamic data structure.}
-            \resumeItem{Managed complex user inputs and buffer overflows to ensure a secure and crash-free command-line interface experience.}
-            \resumeItem{Designed a scalable file I/O layer to handle data serialization and deserialization seamlessly.}
+            \resumeItem{Organized contacts in dynamically allocated arrays with search and sort functions by name, phone, and email.}
+            \resumeItem{Handled user input safely with string bounds checking to prevent buffer overflows and invalid entries.}
+            \resumeItem{Built file I/O routines to save contact data in a structured CSV format and reload it when the application starts.}
         \resumeItemListEnd
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
+
+  \newpage
 
 %-----------WORK EXPERIENCE-----------
 \section{WORK EXPERIENCE}

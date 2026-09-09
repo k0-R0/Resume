@@ -100,10 +100,11 @@ Always use these custom LaTeX commands:
 ## 5. Project Catalog Reference
 
 * **Minishell (Unix Command Shell)**: Linux systems programming, IPC ($N$-pipes via `pipe()` and `dup2()`), POSIX signal handling (`SIGINT`, `SIGTSTP`, `SIGCHLD`), and linked-list process job control (`jobs`, `fg`, `bg`).
-* **Car Black Box (Event Data Recorder)**: Bare-metal PIC16F877A firmware, I2C communication (DS1307 RTC & AT24C04 EEPROM), ADC speed sampling, and UART PC telemetry export.
+* **Multithreaded TFTP Server & Client**: UDP socket programming in C, POSIX threads (`pthreads`), semaphore-based concurrency control (max 10 workers), ephemeral port isolation, and stop-and-wait flow control across octet, byte, and mail modes.
+* **Car Black Box (Event Data Recorder)**: Bare-metal PIC18F4580 firmware, I2C communication (DS1307 RTC & AT24C04 EEPROM), ADC speed sampling, and UART PC telemetry export.
 * **Image Steganography (LSB)**: Bitwise manipulation (masking/shifting), 24-bit BMP header preservation, and secret message payload embedding.
 * **Car Dashboard (Automotive CAN Simulator)**: Bare-metal microcontrollers (PIC18F4580), CAN protocol communication, and CLCD dashboard ECU telemetry display.
-* **Lexical Analyzer for C**: Stream-based lexical tokenization in C11, $O(\log N)$ binary search lookup tables for keywords/operators/symbols, bracket balance tracking, and lexical error handling.
+* **Lexical Analyzer for C**: Stream-based lexical tokenization in C99, $O(\log N)$ binary search lookup tables for keywords/operators/symbols, bracket balance tracking, and lexical error handling.
 * **Inverted Search Engine**: High-performance text searching and indexing system using custom hash tables with linked lists, persistence, and $O(1)$ lookups.
 * **Source2HTML (C Source to HTML Converter)**: Event-driven C source code syntax highlighting engine using a multi-state finite state machine (FSM), CSS class token mapping, HTML entity escaping, and CLI line-numbering.
 * **MP3 Tag Reader & Editor**: Binary stream parsing, ID3v2.3 frame header navigation, and audio payload integrity preservation.
