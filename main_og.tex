@@ -1,0 +1,257 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{iftex}
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-.75in}
+\addtolength{\textheight}{1.5in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item
+    {#1 \vspace{-3pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & {#4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{#1} & \textit{#2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[topsep=2pt, itemsep=1pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Prayush B Menon} \\ \vspace{1pt}
+    \small 628-263-2031 $|$ \href{mailto:bmenonprayush@gmail.com}{bmenonprayush@gmail.com} $|$ 
+    \href{https://linkedin.com/in/prayush-menon}{LinkedIn} $|$
+    \href{https://github.com/k0-R0}{GitHub} $|$
+    \href{https://k0-r0.github.io/}{Portfolio}
+\end{center}
+
+%-----------OBJECTIVE------------
+\section{OBJECTIVE}
+    {Embedded Systems \& Firmware Engineer with an ECE background and hands-on expertise in bare-metal C development on PIC microcontrollers. Proficient in serial communication protocols (CAN, UART, SPI, I2C), Linux systems programming (POSIX, IPC, signals), memory-efficient data structures, and GDB debugging. Experienced in low-level firmware architecture, hardware-software integration, and software test automation.}
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+     \textbf{Languages}{: C / C++, Java} \\
+     \textbf{Microcontrollers \& Protocols}{: PIC18F4580, CAN, UART, I2C, SPI} \\
+     \textbf{Systems \& Concepts}{: POSIX System Calls, IPC (Pipes, Signals), Multiprocessing, Memory Management, Bit Manipulation} \\
+     \textbf{Developer Tools \& OS}{: Linux (Fedora/Ubuntu), GDB, Make, Git, Neovim, Vim, Postman, Burp Suite} \\
+     \textbf{Software Testing \& Management}{: Selenium, Playwright, Performance Monitoring (Lighthouse), Test Automation, JIRA}
+    }
+ \end{itemize}
+ 
+%-----------PROJECTS-----------
+\section{PROJECTS}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Minishell (Unix Command Shell)}{\href{https://github.com/k0-R0/Minishell}{GitHub}}
+      {C, Linux Systems Programming, POSIX APIs, Signals, Process Management}{}
+      \resumeItemListStart
+        \resumeItem{Built a Unix command shell in C supporting command execution, dynamic prompts, built-in commands (\texttt{cd}, \texttt{pwd}, \texttt{exit}), and multi-stage pipelines using \texttt{pipe()} and \texttt{dup2()}.}
+        \resumeItem{Implemented signal handling for \texttt{SIGINT}, \texttt{SIGTSTP}, and \texttt{SIGCHLD} with a linked-list job table to manage background tasks and reap zombie processes via \texttt{waitpid()}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Multithreaded TFTP Server \& Client}{\href{https://github.com/k0-R0/TFTP}{GitHub}}
+      {C, UDP Sockets, POSIX Threads, Semaphores, Network Protocols}{}
+      \resumeItemListStart
+        \resumeItem{Built a multithreaded TFTP file transfer server and client in C over UDP sockets, handling concurrent client uploads and downloads with POSIX worker threads.}
+        \resumeItem{Limited active client transfers to 10 using a counting semaphore (\texttt{sem\_trywait}) that sends instant busy replies, assigning each transfer to a dedicated ephemeral port with binary octet mode.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Concurrent HTTP/1.1 Server}{\href{https://github.com/k0-R0/HTTP_Server}{GitHub}}
+      {C, POSIX Sockets, pthreads, Semaphores, HTTP/1.1, Systems Programming}{}
+      \resumeItemListStart
+        \resumeItem{Architected a concurrent HTTP/1.1 server in C using an 8-worker thread pool and a thread-safe ring buffer synchronized with \texttt{pthread\_mutex\_t} and counting semaphores (\texttt{sem\_t}).}
+        \resumeItem{Implemented dynamic URL routing, header extraction, and static file delivery with automatic MIME detection, alongside disk-backed \texttt{POST} file uploads and zero socket leaks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Car Black Box (Event Data Recorder)}{\href{https://github.com/k0-R0/car_blackbox}{GitHub}}
+      {Embedded C, PIC18F4580, I2C, UART, ADC, EEPROM, RTC, CLCD}{}
+      \resumeItemListStart
+        \resumeItem{Wrote bare-metal I2C functions for a PIC18F4580 microcontroller to log gear shifts, clock timestamps, and ADC speed values to external EEPROM.}
+        \resumeItem{Implemented a circular buffer to store and retrieve the 10 latest events, with a 16x2 CLCD menu, digital keypad authentication, and UART data export to PC.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Car Dashboard (Automotive CAN Simulator)}{\href{https://github.com/k0-R0/Car_Dashboard}{GitHub}}
+      {Embedded C, PIC18F4580, CAN Protocol, LCD, Embedded Systems}{}
+      \resumeItemListStart
+        \resumeItem{Built a two-node automotive dashboard simulator using PIC18F4580 microcontrollers communicating over an isolated CAN bus.}
+        \resumeItem{Transmitted real-time vehicle telemetry (speed, RPM, gear) from the engine ECU and decoded incoming CAN frames to update a live LCD dashboard using hardware filter masks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Lexical Analyzer for C}{\href{https://github.com/k0-R0/Lexical-Analyzer}{GitHub}}
+      {C, Lexical Analysis, Tokenization, Binary Search, File I/O}{}
+      \resumeItemListStart
+        \resumeItem{Built a C source code tokenizer that strips single/multi-line comments and preprocessor directives, classifying code into keywords, identifiers, constants, and operators.}
+        \resumeItem{Used binary search over sorted keyword arrays for fast lookups, reporting line/column error locations for unclosed quotes and unmatched parentheses or braces.}
+      \resumeItemListEnd
+
+  \newpage
+
+    \resumeSubheading
+      {Arbitrary Precision Calculator (APC)}{\href{https://github.com/k0-R0/APC}{GitHub}}
+      {C, Data Structures, Algorithms, Dynamic Memory Allocation}{}
+      \resumeItemListStart
+        \resumeItem{Built an arbitrary-precision calculator in C using doubly linked lists to perform arithmetic on arbitrarily large numbers without 64-bit integer limits.}
+        \resumeItem{Implemented addition, subtraction, multiplication, and division with manual carry/borrow logic across nodes, digit compression, and zero memory leaks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Image Steganography (LSB)}{\href{https://github.com/k0-R0/Steganography}{GitHub}}
+      {C, Bit Manipulation, Binary File I/O, Image Processing}{}
+      \resumeItemListStart
+        \resumeItem{Built a command-line tool in C to hide and extract text messages inside 24-bit BMP images using the Least Significant Bit (LSB) technique.}
+        \resumeItem{Embedded a 2-byte magic string and payload length while preserving the 54-byte BMP header to keep images visually indistinguishable and ensure safe decoding.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {MP3 Tag Reader \& Editor}{\href{https://github.com/k0-R0/MP3_TagReader}{GitHub}}
+      {C, Binary File Parsing, ID3v2 Tags, File I/O}{}
+      \resumeItemListStart
+        \resumeItem{Built a command-line tool in C to view and edit ID3v2.3 metadata (title, artist, album) directly inside MP3 audio files.}
+        \resumeItem{Parsed binary frame headers, handled big-endian byte offsets, and updated tag text in-place with frame size recalculation to preserve audio integrity.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Source2HTML (C Source to HTML Converter)}{\href{https://github.com/k0-R0/Source-2-HTML}{GitHub}}
+      {C, State Machines, Lexical Parsing, File I/O, HTML/CSS}{}
+      \resumeItemListStart
+        \resumeItem{Built a C source code highlighter that scans files using a finite state machine and converts them into syntax-highlighted HTML documents.}
+        \resumeItem{Mapped keywords, strings, and comments into CSS classes, escaping special HTML characters (\texttt{\&lt;}, \texttt{\&gt;}, \texttt{\&amp;}) with optional line numbering for clean browser rendering.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Senior Quality Engineer I}{July 2024 -- January 2026}
+      {Fresh Prints}{Remote}
+      \resumeItemListStart
+        \resumeItem{Built an automated frontend performance testing infrastructure with Lighthouse, reducing manual testing time by 80\% through bi-weekly automated performance monitoring across environments.}
+        \resumeItem{Led backend data migration validation for 7,000+ design records from Shopify to Directus CMS, developing custom validation scripts that ensured 100\% data integrity and schema consistency.}
+        \resumeItem{Identified critical P1 security vulnerabilities using Burp Suite to detect unauthorized access vectors, collaborating directly with development teams for immediate patch verification.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {QA Automation Engineer}{June 2023 -- July 2024}
+      {Cognizant Technology Solutions}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{Developed and maintained test automation frameworks using Java and Selenium WebDriver, standardizing regression testing across core application modules.}
+        \resumeItem{Triaged and tracked software defects across agile sprint cycles, performing root-cause analysis to verify fixes and ensure release reliability.}
+        \resumeItem{Reviewed technical requirements and system specifications to author automated test plans, expanding test coverage across end-to-end user workflows.}
+        \resumeItem{Collaborated with engineering teams to optimize test execution pipelines, migrating manual validation suites into continuous automated test runs.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {QA Engineer}{June 2022 -- June 2023}
+      {Cognizant Technology Solutions}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{Executed functional and regression test suites across multi-tier applications, isolating defect root causes and reducing turnaround time for issue resolution.}
+        \resumeItem{Performed REST API validation and endpoint testing using Postman, verifying payload schemas, HTTP status codes, and backend data flows.}
+        \resumeItem{Authored and maintained comprehensive test suites covering product functional specifications, mitigating critical defect escapes into production releases.}
+        \resumeItem{Scripted test automation routines to replace repetitive manual verification, accelerating regression testing cycles while maintaining consistent test repeatability.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+  
+%-----------EDUCATION & TRAINING-----------
+\section{EDUCATION \& TRAINING}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Emertxe Information Technologies}{Bangalore, India}
+      {Advanced Embedded Systems Training (PIC18F4580, C/C++, Protocols, Linux)}{2025 -- 2026}
+    \resumeSubheading
+      {Amrita School of Engineering}{Kollam, Kerala}
+      {B.Tech in Electronics and Communications Engineering (CGPA: 8.1/10)}{June 2018 -- August 2022}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

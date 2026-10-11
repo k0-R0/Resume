@@ -1,0 +1,358 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{iftex}
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item
+    {#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{#3} & {#4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{#1} & \textit{#2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[topsep=2pt, itemsep=2pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Prayush B Menon} \\ \vspace{1pt}
+    \small Phone Number: 628-263-2031 $|$ Email: \href{mailto:bmenonprayush@gmail.com}{bmenonprayush@gmail.com} \\
+    LinkedIn: \href{https://linkedin.com/in/prayush-menon}{linkedin.com/in/prayush-menon} $|$
+    GitHub: \href{https://github.com/k0-R0}{github.com/k0-R0} $|$
+    Portfolio: \href{https://k0-r0.github.io/}{k0-r0.github.io}
+\end{center}
+
+%-----------CAREER OBJECTIVE------------
+\section{CAREER OBJECTIVE}
+Embedded Systems \& Firmware Engineer with an ECE background and hands-on expertise in bare-metal C/C++ development on PIC microcontrollers. Strong foundation in hardware protocols (CAN, UART, SPI, I2C), memory-efficient data structures, Linux systems programming, and debugging with GDB. Experienced in end-to-end hardware-software integration, multi-threaded POSIX environments, and low-level firmware engineering.
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+     \textbf{Languages}{: C / C++, Java} \\
+     \textbf{Microcontrollers \& Protocols}{: PIC18F4580, UART, I2C, SPI, CAN Protocol} \\
+     \textbf{Developer Tools \& OS}{: Linux (Fedora), GDB, Make, Git, Neovim, Vim, Cursor} \\
+     \textbf{Software Testing \& Management}{: Selenium, Playwright, Test Automation, JIRA, Octane}
+    }
+ \end{itemize}
+
+%-----------PROJECTS AT EMERTXE-----------
+\section{PROJECTS AT EMERTXE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Minishell (Unix Command Shell)}{\href{https://github.com/k0-R0/Minishell}{Github}}
+      {C, Linux Systems Programming, IPC, Process Management, Signals}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a custom Unix command shell in C to understand how Linux manages processes and system calls. The shell supports executing programs, internal built-in commands, multi-stage pipes, signal handling, custom prompts, and job control.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Chained multiple commands using \texttt{pipe()} and redirected standard streams with \texttt{dup2()}, synchronizing process completion using \texttt{waitpid()}.}
+            \resumeItem{Added signal handling for \texttt{SIGINT}, \texttt{SIGTSTP}, and \texttt{SIGCHLD} to suspend foreground jobs and resume them in the background or foreground (\texttt{bg}/\texttt{fg}).}
+            \resumeItem{Used a singly linked list to track process IDs and execution states for background and stopped jobs.}
+            \resumeItem{Engineered built-in commands (\texttt{cd}, \texttt{pwd}, \texttt{exit}, \texttt{echo}) with environment variable parsing (\texttt{\$PATH}, \texttt{\$?}) and asynchronous zombie process reaping.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Multithreaded TFTP Server \& Client}{\href{https://github.com/k0-R0/TFTP}{Github}}
+      {C, UDP Sockets, POSIX Threads, Semaphores, Systems Programming}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a multithreaded TFTP file transfer server and client in C over UDP sockets. The server handles multiple file uploads and downloads at the same time by spawning worker threads, using a counting semaphore to prevent server overload and a stop-and-wait protocol for reliable delivery over UDP.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Capped active worker threads at 10 using a counting semaphore (\texttt{sem\_t}); used non-blocking \texttt{sem\_trywait()} so the main server loop immediately replies with a ``Server is busy'' packet when full without freezing.}
+            \resumeItem{Gave each worker thread its own ephemeral UDP socket to avoid packet collisions, and configured threads as detached (\texttt{PTHREAD\_CREATE\_DETACHED}) so memory and resources are freed automatically on exit.}
+            \resumeItem{Built a stop-and-wait acknowledgment protocol with custom packet structs (\texttt{cmd\_packet}, \texttt{data\_packet}, \texttt{ack\_packet}) to track 512-byte block sequence numbers and resend unacknowledged blocks over UDP.}
+            \resumeItem{Supported 3 transfer modes---standard binary (\texttt{MODE\_OCTET}), single-byte blocks, and a mail mode that converts \texttt{\textbackslash n} to \texttt{\textbackslash n\textbackslash r}---along with an interactive CLI client for batch file transfers.}
+            \resumeItem{Implemented timeout retransmission logic and packet error handling (\texttt{ERROR} opcode) to recover gracefully from dropped UDP datagrams without deadlocks.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+  \newpage
+
+    \resumeSubheading
+      {Concurrent HTTP/1.1 Server}{\href{https://github.com/k0-R0/HTTP_Server}{Github}}
+      {C, POSIX Sockets, pthreads, Semaphores, HTTP/1.1, Systems Programming}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a lightweight, concurrent HTTP/1.1 web server in C using POSIX sockets. Implemented a producer-consumer thread pool with a bounded circular connection queue and synchronization primitives to handle simultaneous client connections, dynamic routing, header inspection, and file transfers.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Designed an 8-worker thread pool sleeping on a counting semaphore (\texttt{sem\_t}), waking instantly on connection dispatch to achieve zero idle CPU overhead.}
+            \resumeItem{Implemented a thread-safe circular ring buffer (capacity 64) synchronized via \texttt{pthread\_mutex\_t} to queue client file descriptors from the \texttt{accept()} loop.}
+            \resumeItem{Engineered an HTTP/1.1 protocol parser to extract request methods, paths, and headers, supporting dynamic route dispatching (e.g., \texttt{/echo/\{str\}}, \texttt{/user-agent}).}
+            \resumeItem{Added static file delivery with automatic extension-based MIME type resolution (\texttt{.html}, \texttt{.png}, \texttt{.jpg}, \texttt{.txt}) and disk-backed \texttt{POST} file uploads with zero socket leaks.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Car Black Box (Event Data Recorder)}{\href{https://github.com/k0-R0/car_blackbox}{Github}}
+      {Embedded C, PIC18F4580, I2C, UART, ADC, EEPROM, RTC, CLCD}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built an event data recorder on a PIC18F4580 microcontroller in Embedded C to log vehicle telemetry during driving and crash events, saving the 10 latest events in an external EEPROM with a CLCD menu and data export to PC over UART.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Wrote bare-metal I2C functions to communicate with the DS1307 real-time clock and AT24C04 EEPROM on a shared two-wire bus.}
+            \resumeItem{Implemented a circular buffer to store and retrieve the 10 latest events in EEPROM across resets.}
+            \resumeItem{Integrated drivers for an ADC potentiometer for speed sampling, matrix keypad, 16x2 CLCD menu, and UART export to PC.}
+            \resumeItem{Engineered secure password authentication with attempt counters, lockout timers, and non-volatile credential updates directly in EEPROM.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Image Steganography (LSB)}{\href{https://github.com/k0-R0/Steganography}{Github}}
+      {C, Bit Manipulation, Image Processing, Binary File I/O}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a command-line tool in C to hide and extract text messages inside 24-bit BMP images using the Least Significant Bit (LSB) technique. The program verifies the BMP header and embeds message bits into RGB pixel bytes without visibly changing the image.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Used bit masking and shifting to replace the least significant bits of image pixel data with message payload bits.}
+            \resumeItem{Protected the 54-byte BMP header to keep file metadata intact and ensure the modified image opens in standard image viewers.}
+            \resumeItem{Embedded a 2-byte magic string and 32-bit payload size header into pixel data to authenticate files during extraction and prevent buffer overruns.}
+            \resumeItem{Implemented error handling and boundary verification to prevent buffer overflows during payload encoding and decoding.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Car Dashboard (Automotive CAN Simulator)}{\href{https://github.com/k0-R0/Car_Dashboard}{Github}}
+      {C, Embedded Systems, PIC18F4580, CAN Protocol, LCD}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built an automotive dashboard simulator using two PIC18F4580 microcontrollers communicating over a CAN bus. One microcontroller acts as an engine ECU broadcasting speed, RPM, and gear status, while the second acts as a dashboard ECU and renders the data on an LCD.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Configured PIC18F4580 CAN registers, message identifiers, and interrupts to broadcast vehicle telemetry frames.}
+            \resumeItem{Wrote display logic on the receiver ECU to filter incoming CAN frames, unpack data bytes, and update the dashboard LCD in real time.}
+            \resumeItem{Simulated driving state changes and sensor inputs to test synchronized communication across the CAN bus.}
+            \resumeItem{Configured CAN acceptance filter masks to isolate engine telemetry packets and prioritized critical alert frames with hardware arbitration.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+  \newpage
+
+    \resumeSubheading
+      {Lexical Analyzer for C}{\href{https://github.com/k0-R0/Lexical-Analyzer}{Github}}
+      {C, Lexical Analysis, Tokenization, Binary Search, File I/O}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a C source code tokenizer that reads files character-by-character, strips comments and preprocessor lines, and groups code into keywords, identifiers, constants, strings, and operators.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Used binary search ($O(\log N)$) over sorted symbol arrays to quickly look up and identify C keywords and operators.}
+            \resumeItem{Built parser state logic to cleanly remove single-line (\texttt{//}) and multi-line (\texttt{/* */}) comments while preserving line numbers.}
+            \resumeItem{Added syntax validation to catch unmatched parentheses, brackets, and braces (\texttt{()}, \texttt{\{\}}, \texttt{[]}), as well as unclosed strings.}
+            \resumeItem{Recorded precise line and column numbers during tokenization to generate detailed compiler-style diagnostic syntax error reports with exact indicators.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Inverted Search Engine}{\href{https://github.com/k0-R0/Inverted_SearchEngine}{Github}}
+      {C, Hash Tables, File I/O, Data Structures}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a text indexing and search engine in C. The program scans text files, builds an inverted index using a custom hash table, and maps each word to a linked list of file occurrences for fast keyword lookups.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Implemented a hash table with linked-list collision handling to index and retrieve search terms in $O(1)$ average time.}
+            \resumeItem{Parsed multiple text files to track word counts, file names, and sentence positions without duplicating memory.}
+            \resumeItem{Added file persistence routines to save the generated database to disk and reload it without re-parsing files.}
+            \resumeItem{Supported multi-file query searches with Boolean operators (\texttt{AND}, \texttt{OR}) and dynamic index updating as new text files are added to the corpus.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Source2HTML (C Source to HTML Syntax Highlighter)}{\href{https://github.com/k0-R0/Source-2-HTML}{Github}}
+      {C, State Machines, Lexical Analysis, File I/O, HTML/CSS}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a C program that converts C source code into syntax-highlighted HTML files. It scans code using a finite state machine, classifies tokens (keywords, comments, strings, preprocessor lines), and wraps them in CSS-styled HTML tags.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Built a state machine with distinct states (idle, string, comment, directive, number) to accurately parse complex C syntax.}
+            \resumeItem{Mapped tokens to CSS color classes to highlight data types, control keywords, and preprocessor directives distinctly.}
+            \resumeItem{Escaped special HTML characters (\texttt{\&lt;}, \texttt{\&gt;}, \texttt{\&amp;}) to prevent browser rendering errors, and added an option for line numbering.}
+            \resumeItem{Added support for customizable CSS syntax themes, line numbering gutters, and entity escaping for nested multi-line comments and literal quotes.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {MP3 Tag Reader \& Editor}{\href{https://github.com/k0-R0/MP3_TagReader}{Github}}
+      {C, Binary Parsing, File I/O, ID3v2 Tags}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a command-line tool in C to inspect and edit ID3v2 metadata (title, artist, album) inside MP3 files without altering the audio data.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Parsed ID3v2.3 binary frame headers and calculated variable-length frame sizes to navigate file offsets.}
+            \resumeItem{Handled big-endian byte conversions to accurately read frame size descriptors from binary files.}
+            \resumeItem{Safely updated tag metadata in-place within the file header without corrupting the underlying MP3 audio stream.}
+            \resumeItem{Implemented dynamic frame resizing algorithms to append expanded metadata tags without truncating audio frames or misaligning sync headers.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+  \newpage
+
+    \resumeSubheading
+      {Arbitrary Precision Calculator (APC)}{\href{https://github.com/k0-R0/APC}{Github}}
+      {C, Data Structures, Algorithms, Dynamic Memory Allocation}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built an arbitrary-precision calculator in C using doubly linked lists, allowing mathematical operations on numbers of any size without being limited by 64-bit data types.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Wrote arithmetic algorithms for addition, subtraction, multiplication, and division across linked list nodes, handling carries and borrows digit-by-digit.}
+            \resumeItem{Handled dynamic memory allocation and cleanup carefully to ensure zero memory leaks during large arithmetic calculations.}
+            \resumeItem{Handled edge cases including sign management (positive/negative results), zero padding, and division-by-zero checks.}
+            \resumeItem{Optimized node digit compression and sign management, implementing high-speed division by repeated subtraction with division-by-zero checks.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Address Book}{\href{https://github.com/k0-R0/AddressBook}{Github}}
+      {C, Data Structures, File I/O, CLI}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a command-line contact management tool in C to store, search, edit, and delete contacts, saving all entries to a CSV file for persistent storage.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Organized contacts in dynamically allocated arrays with search and sort functions by name, phone, and email.}
+            \resumeItem{Handled user input safely with string bounds checking to prevent buffer overflows and invalid entries.}
+            \resumeItem{Built file I/O routines to save contact data in a structured CSV format and reload it when the application starts.}
+            \resumeItem{Engineered multi-field search algorithms supporting case-insensitive lookups, data pagination, and CSV backup validation against file corruption.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------WORK EXPERIENCE-----------
+\section{WORK EXPERIENCE}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Advanced Embedded Systems Course}{July 2024 -- Ongoing}
+      {Emertxe Information Technologies}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{Undergoing a training program on embedded systems.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Senior Quality Engineer I}{July 2024 -- January 2026}
+      {Fresh Prints}{Remote}
+      \resumeItemListStart
+        \resumeItem{Built a frontend performance testing infrastructure using Lighthouse, reducing manual testing time by 80\% through automated bi-weekly performance monitoring across all environments.}
+        \resumeItem{Led data migration validation for 7000+ design records from Shopify to an actual CMS - Directus, developing custom validation scripts that ensured 100\% data integrity during platform transition.}
+        \resumeItem{Identified critical P1 security vulnerabilities through pen testing tools like Burpsuite that allowed unauthorized client data access, collaborating with the development team for immediate resolution.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {QA Automation Engineer}{June 2022 -- July 2024}
+      {Cognizant Technology Solutions}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{Engineered automated test suites for web applications, scaling test automation coverage and validating core business logic across production releases.}
+        \resumeItem{Automated end-to-end user journeys across multi-tier applications, improving test execution efficiency and platform reliability.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------COURSE WORK-----------
+\section{COURSE WORK}
+  \resumeSubHeadingListStart
+    \resumeItem{Data Structures \& Algorithms (DSA), Microcontrollers, Embedded Systems, Operating Systems, Computer Networks}
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Amrita School of Engineering}{Kollam, Kerala}
+      {B.Tech in Electronics and Communications Engineering (CGPA: 8.1/10)}{June 2018 -- August 2022}
+  \resumeSubHeadingListEnd
+
+\end{document}
