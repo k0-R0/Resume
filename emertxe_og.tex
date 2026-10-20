@@ -47,8 +47,8 @@
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.7in}
-\addtolength{\textheight}{1.4in}
+\addtolength{\topmargin}{-.85in}
+\addtolength{\textheight}{1.7in}
 
 \urlstyle{same}
 
@@ -58,23 +58,23 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-5pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
 
 
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[1]{
   \item
-    {#1 \vspace{-2pt}}
+    {#1 \vspace{-3pt}}
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{-3pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{#3} & {#4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-8pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
@@ -97,8 +97,8 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[topsep=2pt, itemsep=2pt, parsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[topsep=1pt, itemsep=0.5pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -290,8 +290,21 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
         \resumeItemListStart
             \resumeItem{Wrote arithmetic algorithms for addition, subtraction, multiplication, and division across linked list nodes, handling carries and borrows digit-by-digit.}
             \resumeItem{Handled dynamic memory allocation and cleanup carefully to ensure zero memory leaks during large arithmetic calculations.}
-            \resumeItem{Handled edge cases including sign management (positive/negative results), zero padding, and division-by-zero checks.}
-            \resumeItem{Optimized node digit compression and sign management, implementing high-speed division by repeated subtraction with division-by-zero checks.}
+            \resumeItem{Optimized node digit compression and signed arithmetic routines, implementing high-speed division by repeated subtraction with division-by-zero protection.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Red-Black Tree (Self-Balancing BST)}{\href{https://github.com/k0-R0/RedBlack_Tree}{Github}}
+      {C, Data Structures, Algorithms, Tree Rotations, Memory Management}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a self-balancing Red-Black Binary Search Tree in C based on CLRS algorithms. Implemented core operations including insertion, deletion, and searching with logarithmic height balancing, maintaining Red-Black invariants through color fixups and tree rotations.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Designed an explicit sentinel (\texttt{NIL}) node architecture to eliminate NULL-pointer edge cases during rotations and parent/child boundary transitions.}
+            \resumeItem{Implemented left and right tree rotations with node recoloring routines for \texttt{rb\_insert}, resolving red-red violations across uncle cases.}
+            \resumeItem{Engineered \texttt{rb\_delete} with subtree transplantation (\texttt{rb\_transplant}) and multi-case deletion fixups to handle black-height deficits (double-black cases).}
+            \resumeItem{Built recursive in-order, pre-order, and post-order traversals, $O(\log N)$ min/max and successor/predecessor queries, and an interactive CLI test harness with leak-free memory cleanup.}
         \resumeItemListEnd
       \resumeItemListEnd
 

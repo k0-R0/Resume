@@ -296,6 +296,20 @@ Embedded Systems \& Firmware Engineer with an ECE background and hands-on expert
       \resumeItemListEnd
 
     \resumeSubheading
+      {Red-Black Tree (Self-Balancing BST)}{\href{https://github.com/k0-R0/RedBlack_Tree}{Github}}
+      {C, Data Structures, Algorithms, Tree Rotations, Memory Management}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Project brief:} Built a self-balancing Red-Black Binary Search Tree in C based on CLRS algorithms. Implemented core operations including insertion, deletion, and searching with logarithmic height balancing, maintaining Red-Black invariants through color fixups and tree rotations.}
+        \resumeItem{\textbf{Key challenges \& Learnings:}}
+        \resumeItemListStart
+            \resumeItem{Designed an explicit sentinel (\texttt{NIL}) node architecture to eliminate NULL-pointer edge cases during rotations and parent/child boundary transitions.}
+            \resumeItem{Implemented left and right tree rotations with node recoloring routines for \texttt{rb\_insert}, resolving red-red violations across uncle cases.}
+            \resumeItem{Engineered \texttt{rb\_delete} with subtree transplantation (\texttt{rb\_transplant}) and multi-case deletion fixups to handle black-height deficits (double-black cases).}
+            \resumeItem{Built recursive in-order, pre-order, and post-order traversals, $O(\log N)$ min/max and successor/predecessor queries, and an interactive CLI test harness with leak-free memory cleanup.}
+        \resumeItemListEnd
+      \resumeItemListEnd
+
+    \resumeSubheading
       {Address Book}{\href{https://github.com/k0-R0/AddressBook}{Github}}
       {C, Data Structures, File I/O, CLI}{}
       \resumeItemListStart

@@ -23,7 +23,7 @@ These are the active, primary resumes used going forward for Embedded Systems / 
    * **Experience Section**: Cognizant and Fresh Prints QA experience are **removed completely**.
    * **Unified Education & Training**: Emertxe training and Amrita School of Engineering are combined under a single `\section{EDUCATION \& TRAINING}` section, followed by `\section{COURSE WORK}`.
    * **Graduation Year**: **Omitted** for college. Only degree and CGPA (`(CGPA: 8.1/10)`) are displayed without graduation dates.
-   * **Projects Section**: Exhaustive catalog of all 12 technical projects with Project Brief, Key Challenges, and 4 granular register/system-level sub-bullets per project.
+   * **Projects Section**: Exhaustive catalog of all 13 technical projects with Project Brief, Key Challenges, and 4 granular register/system-level sub-bullets per project.
 
 ### Original / Legacy Tracks (`*_og.tex`)
 Archived versions preserving the full historical timeline for roles or recruiters requiring complete employment history:
@@ -65,11 +65,11 @@ Archived versions preserving the full historical timeline for roles or recruiter
 1. **HEADING**: Centered Name, Contact links.
 2. **CAREER OBJECTIVE**: Comprehensive embedded/firmware engineer objective.
 3. **TECHNICAL SKILLS**: Grouped technical competencies.
-4. **PROJECTS AT EMERTXE**: 12 exhaustive projects distributed across pages 1 to 4:
+4. **PROJECTS AT EMERTXE**: 13 exhaustive projects distributed across pages 1 to 4:
    * Page 1: Minishell, Multithreaded TFTP Server & Client
    * Page 2: Concurrent HTTP/1.1 Server, Car Black Box, Image Steganography, Car Dashboard
    * Page 3: Lexical Analyzer, Inverted Search Engine, Source2HTML, MP3 Tag Reader & Editor
-   * Page 4: Arbitrary Precision Calculator (APC), Address Book
+   * Page 4: Arbitrary Precision Calculator (APC), Red-Black Tree, Address Book
 5. **EDUCATION & TRAINING**: Combined section containing Emertxe Information Technologies (with training description bullet; **no dates**) and Amrita School of Engineering (degree + CGPA only; **no graduation dates**).
 6. **COURSE WORK**: Core coursework in DSA, microcontrollers, embedded systems, OS, and computer networks.
 
@@ -114,6 +114,7 @@ Always use these custom LaTeX commands:
 * **Inverted Search Engine**: High-performance text searching and indexing system using custom hash tables with linked lists, persistence, and $O(1)$ lookups.
 * **Source2HTML (C Source to HTML Converter)**: Event-driven C source code syntax highlighting engine using a multi-state finite state machine (FSM), CSS class token mapping, HTML entity escaping, and CLI line-numbering.
 * **MP3 Tag Reader & Editor**: Binary stream parsing, ID3v2.3 frame header navigation, and audio payload integrity preservation.
+* **Red-Black Tree (Self-Balancing BST)**: Self-balancing binary search tree in C based on CLRS algorithms, explicit sentinel (`NIL`) nodes, left/right tree rotations, recoloring fixups for insertion/deletion, $O(\log N)$ worst-case search/insert/delete guarantees, tree traversals, and interactive CLI.
 * **Arbitrary Precision Calculator (APC)**: Infinite-precision arithmetic engine in C, dynamic memory allocation, doubly linked lists, and zero-memory-leak routines.
 * **Address Book**: Dynamic memory allocation, CSV-like file persistence, and CLI contact management.
 
